@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
-import androidx.core.graphics.Insets; import androidx.core.view.ViewCompat; import androidx.core.view.WindowInsetsCompat;
+//import androidx.core.graphics.Insets; import androidx.core.view.ViewCompat; import androidx.core.view.WindowInsetsCompat;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -19,9 +19,8 @@ public class QuizActivity extends AppCompatActivity {
     private static final String KEY_ANSWERED = "answered";
     private ImageButton mTrueButton;
     private ImageButton mFalseButton;
-    private ImageButton mPrevButton;
-    private ImageButton mNextButton;
     private TextView mQuestionTextView;
+
     private ArrayList<Integer> mAnsweredQuestions = new ArrayList<>();
 
     private final Question[] mQuestionBank = new Question[]{
@@ -68,7 +67,7 @@ public class QuizActivity extends AppCompatActivity {
             mAnsweredQuestions.add(mCurrentIndex); // Does nothing yet, but soon!
         });
 
-        mPrevButton = findViewById(R.id.prev_button);
+        ImageButton mPrevButton = findViewById(R.id.prev_button);
         mPrevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +80,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        mNextButton = findViewById(R.id.next_button);
+        ImageButton mNextButton = findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -158,7 +157,7 @@ public class QuizActivity extends AppCompatActivity {
             double percentageOfCorrectAnswers = ((double)mNumberOfCorrectAnswers/(double)mQuestionBank.length) * 100;
             Toast.makeText(
                     QuizActivity.this,
-                    getString(R.string.amount_of_correct_answers) + Integer.toString(mNumberOfCorrectAnswers) + "\n" +
+                    getString(R.string.amount_of_correct_answers) + mNumberOfCorrectAnswers + "\n" +
                             getString(R.string.percentage_of_correct_answers, percentageOfCorrectAnswers),
                     Toast.LENGTH_LONG).show();
         }
